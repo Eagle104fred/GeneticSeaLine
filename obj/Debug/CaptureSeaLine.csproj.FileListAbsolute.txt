@@ -156,3 +156,7 @@ D:\C#\Code\GeneticSeaLine\obj\Debug\CaptureSeaLine.csproj.CoreCompileInputs.cach
 D:\C#\Code\GeneticSeaLine\obj\Debug\CaptureSeaLine.csproj.CopyComplete
 D:\C#\Code\GeneticSeaLine\obj\Debug\CaptureSeaLine.exe
 D:\C#\Code\GeneticSeaLine\obj\Debug\CaptureSeaLine.pdb
+D:\C#\Code\GeneticSeaLine\bin\Debug\Unity.Mathematics.dll
+D:\C#\Code\GeneticSeaLine\bin\Debug\Unity.Mathematics.Extensions.dll
+D:\C#\Code\GeneticSeaLine\bin\Debug\Unity.Mathematics.Extensions.Hybrid.dll
+D:\C#\Code\GeneticSeaLine\bin\Debug\Unity.Mathematics.pdb
