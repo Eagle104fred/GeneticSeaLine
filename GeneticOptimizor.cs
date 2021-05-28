@@ -41,7 +41,7 @@ namespace CaptureSeaLine
         {
             var selection = new EliteSelection();
             var crossover = new TwoPointCrossover();
-            var mutation = new ReverseSequenceMutation();
+            var mutation = new MyMutation();
             var fitness = new MyProblemFitness(pointList.ToArray());
             var chromosome = new MyProblemChromosome(pointList.Count);
             var population = new Population(100, 100, chromosome);

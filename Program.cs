@@ -4,7 +4,7 @@ using OpenCvSharp;
 
 namespace CaptureSeaLine
 {
-    
+
 
     class Program
     {
@@ -12,7 +12,7 @@ namespace CaptureSeaLine
 
         static void Main(string[] args)
         {
-            
+
             VideoCapture Capture = new VideoCapture(rtspUrl);
             Cv2.NamedWindow("test", WindowFlags.Normal);
             Cv2.NamedWindow("org", WindowFlags.Normal);
@@ -27,7 +27,7 @@ namespace CaptureSeaLine
                 double minFitness = double.MinValue;
                 while (Capture.Read(img))
                 {
-                    
+
                     Mat imgGray = new Mat();
 
                     Cv2.CvtColor(img, imgGray, ColorConversionCodes.BGR2GRAY); //KS:灰度化 
@@ -43,20 +43,11 @@ namespace CaptureSeaLine
                     //KS: 霍夫直线提取-3:一条直线累加的平面阈值;-2:过滤比这个短的线;-1:点与点之间的间隔
                     LineSegmentPoint[] linePoint = Cv2.HoughLinesP(imgGray, 1.0, Cv2.PI / 180, 100, 300, 100);
 
-                    //KS:点的计算方法 
-                    /*if (linePoint.Length > 1)
-                    {
-                        GeneticOptimizor GA = new GeneticOptimizor();
-                        GA.AddLine(linePoint);
-                        GA.Run(); //KS:遗传算法 
-                        Cv2.Line(img, GA.startPoint, GA.endPoint, Scalar.Red, 4);
-                    }*/
-                    //KS:线的计算方法 
-                        GeneticOptimizor2 GA = new GeneticOptimizor2();
-                        GA.AddLine(linePoint);
-                        GA.Run(ref minFitness, ref startPoint, ref endPoint); //KS:遗传算法 
-                        Cv2.Line(img, startPoint, endPoint, Scalar.Red, 4);
-                    
+                    GeneticOptimizor2 GA = new GeneticOptimizor2();
+                    GA.AddLine(linePoint);
+                    GA.Run(ref minFitness, ref startPoint, ref endPoint); //KS:遗传算法 
+                    Cv2.Line(img, startPoint, endPoint, Scalar.Red, 4);
+
 
                     for (int i = 0; i < linePoint.Length; i++)
                     {
@@ -68,11 +59,18 @@ namespace CaptureSeaLine
                     Cv2.ImShow("org", img);
                     Cv2.ImShow("test", imgGray);
                     Cv2.WaitKey(1);
+
+                    bool isCheck = false;
+                    if (isCheck)
+                    {
+                        GA.CheckAnswer();
+
+                    }
                 }
-                    
-                    
-                
-                
+
+
+
+
             }
 #else
             Mat img = Cv2.ImRead(@"D:\C#\Code\CaptureSeaLine\bin\Debug\SeaLine.png", ImreadModes.Color);
@@ -98,5 +96,5 @@ namespace CaptureSeaLine
 
     }
 
-    
+
 }
